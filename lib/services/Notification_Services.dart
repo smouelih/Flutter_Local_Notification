@@ -1,7 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:localnotif/UI/screens/GoTo_Screen.dart';
+import 'package:localnotif/main.dart';
 
 //https://www.youtube.com/watch?v=uZvWY1VGnZU
 
@@ -70,7 +72,11 @@ class NotificationService {
     debugPrint('onActionReceivedMethod');
     final payload = receivedAction.payload ?? {};
     if (payload["navigate"] == "true") {
-      Get.to(const GoToScreen());
+      MyApp.navigatorKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const GoToScreen(),
+        ),
+      );
     }
   }
 
